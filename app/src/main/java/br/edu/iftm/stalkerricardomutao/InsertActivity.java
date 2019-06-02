@@ -1,10 +1,18 @@
 package br.edu.iftm.stalkerricardomutao;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.provider.MediaStore;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+
+import java.util.ArrayList;
+
+import br.edu.iftm.stalkerricardomutao.data.DAOPerson;
+import br.edu.iftm.stalkerricardomutao.model.Person;
 
 public class InsertActivity extends AppCompatActivity {
 
@@ -17,6 +25,9 @@ public class InsertActivity extends AppCompatActivity {
     private EditText ptxtBir;
     private EditText ptxtPhone;
     private EditText ptxtDesc;
+    private static final int CAMERA_CODE = 0000;
+    private ArrayList<Bitmap> tempGallery;
+    private Bitmap btm;
 
 
     @Override
@@ -31,32 +42,56 @@ public class InsertActivity extends AppCompatActivity {
         ptxtBir = (EditText)findViewById(R.id.ptxtBir);
         ptxtPhone = (EditText)findViewById(R.id.ptxtPhone);
         ptxtDesc = (EditText)findViewById(R.id.ptxtDesc);
+
+        tempGallery = new ArrayList<>();
     }
 
     public void onClickSave(View view) {
 
-        String firstName = ptxtFN.getText().toString();
-        String lastName = ptxtLN.getText().toString();
-        String age = ptxtAge.getText().toString();
-        String job = ptxtJob.getText().toString();
-        String birthday = ptxtBir.getText().toString();
-        String phone = ptxtPhone.getText().toString();
-        String description = ptxtDesc.getText().toString();
+
+        Person p = new Person(
+                ptxtFN.getText().toString(),
+                ptxtLN.getText().toString(),
+                ptxtAge.getText().toString(),
+                ptxtJob.getText().toString(),
+                ptxtBir.getText().toString(),
+                ptxtPhone.getText().toString(),
+                ptxtDesc.getText().toString(),
+                tempGallery
 
 
-        Intent intent = new Intent(this, StartActivity.class);
+        );
 
-        Bundle bundle = new Bundle();
-        bundle.putString("firstName", firstName);
-        bundle.putString("lastName", lastName);
-        bundle.putString("age", age);
-        bundle.putString("job", job);
-        bundle.putString("birthday", birthday);
-        bundle.putString("phone", phone);
-        bundle.putString("description", description);
-        intent.putExtra(RECORD_KEY, bundle);
+        DAOPerson.getINSTANCE().addPerson(p);
+        finish();
+
+    }
+
+    public void onClickTakePic(View view) {
+        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivityForResult(intent, CAMERA_CODE);
+        }
+    }
+
+    public void onClickGallery(View view){
+        Intent intent = new Intent(this, GalleryActivity.class);
+
+        intent.putExtra("tempGallery", tempGallery);
 
         startActivity(intent);
+    }
 
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        if(requestCode == CAMERA_CODE && resultCode == RESULT_OK && data != null){
+            Bundle bundle = data.getExtras();
+            if (bundle != null && bundle.containsKey("data")){
+                btm = (Bitmap) bundle.get("data");
+                tempGallery.add(btm);
+                //DAOPic.getINSTANCE().addPic(btm);
+            }
+        }
     }
 }

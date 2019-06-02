@@ -9,7 +9,7 @@ import br.edu.iftm.stalkerricardomutao.R;
 import br.edu.iftm.stalkerricardomutao.model.Person;
 
 
-public class PeopleListViewHolder
+public class PersonListViewHolder
         extends RecyclerView.ViewHolder
         implements View.OnClickListener
 {
@@ -18,9 +18,9 @@ public class PeopleListViewHolder
     private TextView txtLastName;
     private TextView txtAge;
     private Person person;
-    private PeopleListAdapter.PersonListener listener;
+    private PersonListAdapter.PersonListener listener;
 
-    public PeopleListViewHolder(@NonNull View itemView, PeopleListAdapter.PersonListener listener) {
+    public PersonListViewHolder(@NonNull View itemView, PersonListAdapter.PersonListener listener) {
         super(itemView);
         txtFirstName = itemView.findViewById(R.id.txtFirstName);
         txtAge = itemView.findViewById(R.id.txtAge);

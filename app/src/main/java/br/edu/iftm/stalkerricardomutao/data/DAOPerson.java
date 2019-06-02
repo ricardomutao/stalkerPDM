@@ -5,11 +5,14 @@ import java.util.ArrayList;
 import br.edu.iftm.stalkerricardomutao.model.Person;
 
 public class DAOPerson {//Singleton
+    private int counter;
     private ArrayList<Person> people;
     private static DAOPerson INSTANCE;
 
     private DAOPerson(){//Construtor
+
         people = new ArrayList<>();
+        counter = 0;
     }
 
     public static DAOPerson getINSTANCE(){
@@ -20,6 +23,7 @@ public class DAOPerson {//Singleton
     }
 
     public void addPerson(Person p) {
+        p.setId(counter++);
         people.add(p);
     }
 

@@ -8,7 +8,7 @@
 
     <EditText
         android:id="@+id/ptxtDesc"
-        android:layout_width="354dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
@@ -22,7 +22,7 @@
 
     <EditText
         android:id="@+id/ptxtPhone"
-        android:layout_width="354dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
@@ -36,7 +36,7 @@
 
     <EditText
         android:id="@+id/ptxtJob"
-        android:layout_width="354dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
@@ -50,7 +50,7 @@
 
     <EditText
         android:id="@+id/ptxtBir"
-        android:layout_width="354dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
@@ -64,7 +64,7 @@
 
     <EditText
         android:id="@+id/ptxtLN"
-        android:layout_width="354dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
@@ -78,7 +78,7 @@
 
     <EditText
         android:id="@+id/ptxtAge"
-        android:layout_width="354dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
@@ -92,7 +92,7 @@
 
     <EditText
         android:id="@+id/ptxtFN"
-        android:layout_width="354dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
         android:layout_marginTop="8dp"
@@ -106,14 +106,42 @@
 
     <Button
         android:id="@+id/btn_save"
-        android:layout_width="356dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="3dp"
+        android:layout_marginEnd="8dp"
         android:onClick="onClickSave"
         android:text="Save"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnGallery" />
+
+    <Button
+        android:id="@+id/btnGallery"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:onClick="onClickGallery"
+        android:text="Gallery"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnTakePic" />
+
+    <Button
+        android:id="@+id/btnTakePic"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:onClick="onClickTakePic"
+        android:text="Take Pic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ptxtDesc" />
 </android.support.constraint.ConstraintLayout>

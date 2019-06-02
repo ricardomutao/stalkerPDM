@@ -9,14 +9,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="br.edu.iftm.stalkerricardomutao.MainActivity">
+        <activity android:name="br.edu.iftm.stalkerricardomutao.SeePersonActivity">
+        </activity>
+        <activity android:name="br.edu.iftm.stalkerricardomutao.GalleryActivity">
         </activity>
         <activity android:name="br.edu.iftm.stalkerricardomutao.InsertActivity">
 
         </activity>
         <activity android:name="br.edu.iftm.stalkerricardomutao.ShowPersonActivity">
         </activity>
-        <activity android:name="br.edu.iftm.stalkerricardomutao.StartActivity">
+        <activity android:name="br.edu.iftm.stalkerricardomutao.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

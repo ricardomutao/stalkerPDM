@@ -1,5 +1,6 @@
 package br.edu.iftm.stalkerricardomutao;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -17,6 +18,7 @@ public class ShowPersonActivity extends AppCompatActivity {
     private TextView txtPR;
     private TextView txtDR;
 
+    private Person person;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +35,7 @@ public class ShowPersonActivity extends AppCompatActivity {
 
 
 
-        Person person = getIntent().getParcelableExtra(MainActivity.PERSON_KEY);
+        person = getIntent().getParcelableExtra("person");
 
         txtFNR.setText(person.getFirstName());
         txtLNR.setText(person.getLastName());
@@ -47,5 +49,13 @@ public class ShowPersonActivity extends AppCompatActivity {
 
     public void onCLickCancel(View view){
         finish();
+    }
+
+    public void onClickPersonGallery(View v){
+        Intent intent = new Intent(this, GalleryActivity.class);
+
+        intent.putExtra("tempGallery", person.getPics());
+
+        startActivity(intent);
     }
 }

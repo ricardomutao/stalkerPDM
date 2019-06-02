@@ -1,9 +1,13 @@
 package br.edu.iftm.stalkerricardomutao.model;
 
+import android.graphics.Bitmap;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.util.ArrayList;
+
 public class Person implements Parcelable {
+    private int id;
     private String firstName;
     private String lastName;
     private String age;
@@ -11,10 +15,11 @@ public class Person implements Parcelable {
     private String birth;
     private  String phone;
     private String description;
+    private ArrayList<Bitmap> pics;
 
 
 
-    public Person(String firstName, String lastName, String age, String job, String birth, String phone, String description) {
+    public Person(String firstName, String lastName, String age, String job, String birth, String phone, String description,  ArrayList<Bitmap> pics) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
@@ -22,6 +27,7 @@ public class Person implements Parcelable {
         this.birth = birth;
         this.phone = phone;
         this.description = description;
+        this.pics = pics;
 
     }
 
@@ -33,6 +39,7 @@ public class Person implements Parcelable {
         birth = in.readString();
         phone = in.readString();
         description = in.readString();
+        pics = in.createTypedArrayList(Bitmap.CREATOR);
 
     }
 
@@ -47,6 +54,14 @@ public class Person implements Parcelable {
             return new Person[size];
         }
     };
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getFirstName() {
         return firstName;
@@ -104,6 +119,14 @@ public class Person implements Parcelable {
         this.description = description;
     }
 
+    public ArrayList<Bitmap> getPics() {
+        return pics;
+    }
+
+    public void setPics(ArrayList<Bitmap> pics) {
+        this.pics = pics;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -118,6 +141,15 @@ public class Person implements Parcelable {
         dest.writeString(birth);
         dest.writeString(phone);
         dest.writeString(description);
+        dest.writeTypedList(pics);
 
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if(obj == null) return false;
+        if(!(obj instanceof Person)) return false;
+        if(((Person) obj).getId() == this.getId()) return true;
+        return false;
     }
 }

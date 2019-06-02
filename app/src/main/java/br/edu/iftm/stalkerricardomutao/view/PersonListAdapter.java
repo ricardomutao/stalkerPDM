@@ -12,12 +12,12 @@ import br.edu.iftm.stalkerricardomutao.R;
 import br.edu.iftm.stalkerricardomutao.data.DAOPerson;
 import br.edu.iftm.stalkerricardomutao.model.Person;
 
-public class PeopleListAdapter extends RecyclerView.Adapter<PeopleListViewHolder> {
+public class PersonListAdapter extends RecyclerView.Adapter<PersonListViewHolder> {
 
     private ArrayList<Person> peoplelist;
     private PersonListener listener;
 
-    public PeopleListAdapter(PersonListener listener) {
+    public PersonListAdapter(PersonListener listener) {
 
         peoplelist = DAOPerson.getINSTANCE().getPeople();
         this.listener = listener;
@@ -30,15 +30,15 @@ public class PeopleListAdapter extends RecyclerView.Adapter<PeopleListViewHolder
 
     @NonNull
     @Override
-    public PeopleListViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+    public PersonListViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         LayoutInflater layoutInflater = LayoutInflater.from(viewGroup.getContext());
         View view = layoutInflater.inflate(R.layout.person_resume, viewGroup, false);
-        PeopleListViewHolder peopleListViewHolder = new PeopleListViewHolder(view, this.listener);
+        PersonListViewHolder peopleListViewHolder = new PersonListViewHolder(view, this.listener);
         return peopleListViewHolder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull PeopleListViewHolder peopleListViewHolder, int i) {
+    public void onBindViewHolder(@NonNull PersonListViewHolder peopleListViewHolder, int i) {
         peopleListViewHolder.bind(peoplelist.get(i));
 
     }
