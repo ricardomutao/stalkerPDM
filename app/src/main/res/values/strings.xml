@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Stalker</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="ssn">SSN</string>
+    <string name="email" translatable="false">E-mail</string>
+    <string name="age">Age</string>
+</resources>

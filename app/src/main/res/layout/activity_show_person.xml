@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ShowPersonActivity">
+
+    <TextView
+        android:id="@+id/txtFirstName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/first_name"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/txtFNR"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/txtLastName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/last_name"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/txtLNR"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/txtAge"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/age"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/txtAR"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/txtJob"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Job"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/txtJR"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/txtBirthday"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Birthday"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/txtBR"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/txtPhone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Phone"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/txtPR"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/txtDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Description"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/txtDR"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="18sp" />
+</LinearLayout>

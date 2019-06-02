@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">LLTestADS</string>
+    <string name="first_name">Nome</string>
+    <string name="last_name">Sobrenome</string>
+    <string name="ssn">CPF</string>
+    <string name="age">Idade</string>
+</resources>
