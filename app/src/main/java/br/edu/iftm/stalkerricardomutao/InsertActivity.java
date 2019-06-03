@@ -8,10 +8,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
 import br.edu.iftm.stalkerricardomutao.data.DAOPerson;
+import br.edu.iftm.stalkerricardomutao.data.DBHelper;
 import br.edu.iftm.stalkerricardomutao.model.Person;
 
 public class InsertActivity extends AppCompatActivity {
@@ -49,21 +51,25 @@ public class InsertActivity extends AppCompatActivity {
     public void onClickSave(View view) {
 
 
-        Person p = new Person(
-                ptxtFN.getText().toString(),
-                ptxtLN.getText().toString(),
-                ptxtAge.getText().toString(),
-                ptxtJob.getText().toString(),
-                ptxtBir.getText().toString(),
-                ptxtPhone.getText().toString(),
-                ptxtDesc.getText().toString(),
-                tempGallery
+        String firstName = ptxtFN.getText().toString();
+        String lastName = ptxtLN.getText().toString();
+        String age = ptxtAge.getText().toString();
+        String job = ptxtJob.getText().toString();
+        String birthday = ptxtBir.getText().toString();
+        String phone = ptxtPhone.getText().toString();
+        String description = ptxtDesc.getText().toString();
 
 
-        );
+        if(!firstName.isEmpty() && !lastName.isEmpty() && !age.isEmpty() && !job.isEmpty() && !birthday.isEmpty() && !phone.isEmpty() && !description.isEmpty()){
+            DBHelper dbHelper = new DBHelper(this);
+            Person person = new Person(firstName, lastName, age, job, birthday, phone, description, tempGallery);
+            DAOPerson.insert(dbHelper, person);
+            Toast.makeText(this, "Person created: "+person.getFirstName(), Toast.LENGTH_SHORT).show();
+            finish();
+        }else {
+            Toast.makeText(this, "Person not created", Toast.LENGTH_SHORT).show();
 
-        DAOPerson.getINSTANCE().addPerson(p);
-        finish();
+        }
 
     }
 
