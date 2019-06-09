@@ -24,6 +24,7 @@ public class DBSchema {
         public static final String BIRTH = "p_birth";
         public static final String PHONE = "p_phone";
         public static final String DESCRIPTION = "p_description";
+        public static final String PICS = "p_pics";
 
         public static final String createQuery(){
             return "CREATE TABLE " + TABLENAME + " (" +
@@ -36,6 +37,30 @@ public class DBSchema {
                     PHONE + " TEXT NOT NULL, " +
                     DESCRIPTION + " TEXT NOT NULL, " +
                     ");";
+        }
+
+    }
+
+
+    public static final class PersonPic implements BaseColumns {
+
+
+
+
+        public static final String TABLENAME = "personpic";
+        public static final String PATH = "pp_path";
+        public static final String PERSON_ID = "p_id";
+
+
+        //Temos que criar outra tabela para relacionar com a Person:
+
+        public static final String createQuery2(){
+            return "CREATE TABLE " + TABLENAME + " (" +
+                    _ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                    PATH + " TEXT NOT NULL, " +
+                    PERSON_ID + " INTEGER, " +
+                    " FOREIGN KEY ("+PERSON_ID+") REFERENCES "+Person.TABLENAME+"("+Person._ID+"));";
+
         }
 
     }

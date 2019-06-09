@@ -4,10 +4,11 @@ import android.graphics.Bitmap;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.sql.Blob;
 import java.util.ArrayList;
 
 public class Person implements Parcelable {
-    private int id;
+    private long id;
     private String firstName;
     private String lastName;
     private String age;
@@ -15,11 +16,12 @@ public class Person implements Parcelable {
     private String birth;
     private  String phone;
     private String description;
-    private ArrayList<Bitmap> pics;
+    private ArrayList<String> pics;
 
 
 
-    public Person(String firstName, String lastName, String age, String job, String birth, String phone, String description,  ArrayList<Bitmap> pics) {
+    public Person(long id, String firstName, String lastName, String age, String job, String birth, String phone, String description  /* ,ArrayList<String> pics*/) {
+        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
@@ -27,11 +29,12 @@ public class Person implements Parcelable {
         this.birth = birth;
         this.phone = phone;
         this.description = description;
-        this.pics = pics;
+        //this.pics = pics;
 
     }
 
     protected Person(Parcel in) {
+        id = in.readLong();
         firstName = in.readString();
         lastName = in.readString();
         age = in.readString();
@@ -39,7 +42,7 @@ public class Person implements Parcelable {
         birth = in.readString();
         phone = in.readString();
         description = in.readString();
-        pics = in.createTypedArrayList(Bitmap.CREATOR);
+        //pics = in.createStringArrayList();
 
     }
 
@@ -55,11 +58,11 @@ public class Person implements Parcelable {
         }
     };
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -119,11 +122,11 @@ public class Person implements Parcelable {
         this.description = description;
     }
 
-    public ArrayList<Bitmap> getPics() {
+    public ArrayList<String> getPics() {
         return pics;
     }
 
-    public void setPics(ArrayList<Bitmap> pics) {
+    public void setPics(ArrayList<String> pics) {
         this.pics = pics;
     }
 
@@ -134,6 +137,7 @@ public class Person implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
+        dest.writeLong(id);
         dest.writeString(firstName);
         dest.writeString(lastName);
         dest.writeString(age);
@@ -141,7 +145,7 @@ public class Person implements Parcelable {
         dest.writeString(birth);
         dest.writeString(phone);
         dest.writeString(description);
-        dest.writeTypedList(pics);
+        //dest.writeStringList(pics);
 
     }
 

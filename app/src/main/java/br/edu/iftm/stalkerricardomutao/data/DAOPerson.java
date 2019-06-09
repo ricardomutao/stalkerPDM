@@ -9,8 +9,8 @@ import java.util.ArrayList;
 
 import br.edu.iftm.stalkerricardomutao.model.Person;
 
-public class DAOPerson {//Singleton
-    public static final void insert(DBHelper dbHelper, Person person){
+public class DAOPerson {
+    public static final long insert(DBHelper dbHelper, Person person){
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         ContentValues cv = new ContentValues(); //Serve para guardar par de valores
         //INSERT INTO CONTACT(C_NAME, C_PNUMBER) VALUES ("fulano", "1234");
@@ -22,8 +22,9 @@ public class DAOPerson {//Singleton
         cv.put(DBSchema.Person.PHONE, person.getPhone());
         cv.put(DBSchema.Person.DESCRIPTION, person.getDescription());
 
-        db.insert(DBSchema.Person.TABLENAME, null, cv);
+        long id = db.insert(DBSchema.Person.TABLENAME, null, cv);
         db.close();
+        return id;
     }
 
     public static final void remove(DBHelper dbHelper, long id){
@@ -86,10 +87,11 @@ public class DAOPerson {//Singleton
             String lname = cursor.getString(cursor.getColumnIndex(DBSchema.Person.LNAME));
             String age = cursor.getString(cursor.getColumnIndex(DBSchema.Person.AGE));
             String job = cursor.getString(cursor.getColumnIndex(DBSchema.Person.JOB));
+            String birth = cursor.getString(cursor.getColumnIndex(DBSchema.Person.BIRTH));
             String phone = cursor.getString(cursor.getColumnIndex(DBSchema.Person.PHONE));
             String description = cursor.getString(cursor.getColumnIndex(DBSchema.Person.DESCRIPTION));
-            //Person person = new Person(id, fname, lname, age, job, phone, description);
-            //people.add(person);
+            Person person = new Person(id, fname, lname, age, job,birth, phone, description);
+            people.add(person);
 
         }
         cursor.close();
