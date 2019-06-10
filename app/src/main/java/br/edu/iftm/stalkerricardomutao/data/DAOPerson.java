@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import br.edu.iftm.stalkerricardomutao.model.Person;
 
 public class DAOPerson {
+
     public static final long insert(DBHelper dbHelper, Person person){
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         ContentValues cv = new ContentValues(); //Serve para guardar par de valores

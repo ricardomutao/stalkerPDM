@@ -17,10 +17,9 @@ public class PersonListAdapter extends RecyclerView.Adapter<PersonListViewHolder
     private ArrayList<Person> peoplelist;
     private PersonListener listener;
 
-    public PersonListAdapter(PersonListener listener) {
-
-        peoplelist = DAOPerson.getINSTANCE().getPeople();
-        this.listener = listener;
+    public PersonListAdapter(ArrayList<Person> people, PersonListener personListener){
+        this.peoplelist = people;
+        this.listener = personListener;
     }
 
 
@@ -47,4 +46,29 @@ public class PersonListAdapter extends RecyclerView.Adapter<PersonListViewHolder
     public int getItemCount() {
         return peoplelist.size();
     }
+
+    public void notifyContactUpdated(Person person){
+        int index = this.peoplelist.indexOf(person);//pega o indice do contact, que usa internamente o index
+        this.peoplelist.get(index).setFirstName(person.getFirstName());
+        this.peoplelist.get(index).setLastName(person.getLastName());
+        this.peoplelist.get(index).setAge(person.getAge());
+        this.peoplelist.get(index).setBirth(person.getBirth());
+        this.peoplelist.get(index).setJob(person.getJob());
+        this.peoplelist.get(index).setPhone(person.getPhone());
+        this.peoplelist.get(index).setDescription(person.getDescription());
+        notifyItemChanged(index);//Forçar o recyclerview ir naquela posição e colocar o valor correto
+    }
+
+    public void notifyContactRemoved(Person person){
+        int index = this.peoplelist.indexOf(person);
+        this.peoplelist.remove(index);
+        notifyItemRemoved(index);//Forçar o recyclerview a ir naquela posição e apagar o valor
+    }
+
+    public void setFilteredResult(ArrayList<Person> filteredResult){
+        this.peoplelist = filteredResult;
+        notifyDataSetChanged();
+    }
+
+
 }

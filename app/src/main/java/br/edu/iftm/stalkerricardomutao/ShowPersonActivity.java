@@ -8,7 +8,18 @@ import android.widget.TextView;
 
 import br.edu.iftm.stalkerricardomutao.model.Person;
 
+
+
+
+
 public class ShowPersonActivity extends AppCompatActivity {
+
+
+    public static final String MODE_KEY = "br.edu.iftm.stalkerricardomutao.show.MODE";
+    public static final int MODE_EDIT = 1;
+    public static final int MODE_REMOVE = 2;
+    public static final String PERSON_KEY = "br.edu.iftm.stalkerricardomutao.show.CONTACT";
+
 
     private TextView txtFNR;
     private TextView txtLNR;
